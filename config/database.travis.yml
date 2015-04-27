@@ -1,0 +1,4 @@
+test:
+  adapter: mysq2
+  database: Syllabus_test
+  username: root
