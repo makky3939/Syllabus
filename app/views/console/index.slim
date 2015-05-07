@@ -2,7 +2,7 @@ nav.navbar.navbar-default
   .container
     .navbar-header
       .navbar-brand
-        span Syllabus Console
+        = link_to 'Syllabus Console', console_index_path
     .navbar-collapse.pull-right
       = form_tag console_index_path, :method => 'get', :class => 'navbar-form' do
         .form-group
