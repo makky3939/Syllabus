@@ -54,6 +54,6 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
 
-  resources :console, only: [:index]
+  resources :console, only: [:index, :show]
 
 end
