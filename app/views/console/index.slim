@@ -12,9 +12,45 @@ nav.navbar.navbar-default
 .container
 
   - if @subjects.nil?
-    .text-center
-      .alert.alert-info
-        p めにゅー
+    .col-sm-4.text-center
+      .panel.panel-default
+        .panel-body
+          = fa_icon "book", class: 'fa-5x'
+          p
+            br
+            |知識情報図書館学類の授業を表示
+
+    .col-sm-4.text-center
+      .panel.panel-default
+        .panel-body
+          = fa_icon "book", class: 'fa-5x'
+          p
+            br
+            |知識情報図書館学類の授業を表示
+
+    .col-sm-4.text-center
+      .panel.panel-default
+        .panel-body
+          = fa_icon "book", class: 'fa-5x'
+          p
+            br
+            |知識情報図書館学類の授業を表示
+
+    .col-sm-4.text-center
+      .panel.panel-default
+        .panel-body
+          = fa_icon "book", class: 'fa-5x'
+          p
+            br
+            |知識情報図書館学類の授業を表示
+
+    .col-sm-4.text-center
+      .panel.panel-default
+        .panel-body
+          = fa_icon "book", class: 'fa-5x'
+          p
+            br
+            |知識情報図書館学類の授業を表示
 
   - unless  @subjects.nil?
     - if @subjects.empty?
