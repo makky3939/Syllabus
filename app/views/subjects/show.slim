@@ -1,0 +1,21 @@
+h1 subject#show
+p = @subject.title
+p = @subject.id
+p = @subject.allow_auditor
+p = @subject.code
+p = @subject.condition
+p = @subject.credit
+p = @subject.default_grade
+p = @subject.method
+p = @subject.location
+p = @subject.period
+p = @subject.semester
+p = @subject.title
+p = @subject.title_sub
+p = @subject.abstract
+p = @subject.note
+p = @subject.created_at
+p = @subject.updated_at
+ul
+  - @subject.teachers.each do |teacher|
+    li = teacher
