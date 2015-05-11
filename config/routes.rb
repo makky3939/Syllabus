@@ -53,4 +53,11 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+
+  resources :search, only: [:index]
+
+  resources :subjects, only: [:show]
+
+  resources :teachers, only: [:show]
+
 end

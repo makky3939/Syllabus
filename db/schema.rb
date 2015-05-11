@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 20150427222600) do
   end
 
   create_table "teachers", force: :cascade do |t|
-    t.binary   "name",       limit: 65535
+    t.string   "name",       limit: 255
     t.binary   "face_main",  limit: 65535
     t.binary   "face_sub",   limit: 65535
     t.binary   "voice",      limit: 65535
