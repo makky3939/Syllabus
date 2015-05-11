@@ -1,0 +1,10 @@
+.container
+  p = link_to 'Syllabus', search_index_path
+  h1 teacher#show
+  p = @teacher.id
+  p = @teacher.name
+  p = @teacher.created_at
+  p = @teacher.updated_at
+  ul
+    - @teacher.subjects.each do |subject|
+      li = link_to subject.title, subject_path(id: subject.id)
