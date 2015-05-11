@@ -58,4 +58,6 @@ Rails.application.routes.draw do
 
   resources :subjects, only: [:show]
 
+  resources :teachers, only: [:show]
+
 end

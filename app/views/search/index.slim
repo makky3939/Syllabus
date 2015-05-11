@@ -12,45 +12,48 @@ nav.navbar.navbar-default
 .container
 
   - if @subjects.nil?
-    .col-sm-4.text-center
-      .panel.panel-default
-        .panel-body
-          = fa_icon "book", class: 'fa-5x'
-          p
-            br
-            |知識情報図書館学類の授業を表示
+    .text-center
+      .alert.alert-info
+        p 検索ワードを入力してください
+    / .col-sm-4.text-center
+    /   .panel.panel-default
+    /     .panel-body
+    /       = fa_icon "book", class: 'fa-5x'
+    /       p
+    /         br
+    /         |知識情報図書館学類の授業を表示
 
-    .col-sm-4.text-center
-      .panel.panel-default
-        .panel-body
-          = fa_icon "book", class: 'fa-5x'
-          p
-            br
-            |知識情報図書館学類の授業を表示
+    / .col-sm-4.text-center
+    /   .panel.panel-default
+    /     .panel-body
+    /       = fa_icon "book", class: 'fa-5x'
+    /       p
+    /         br
+    /         |知識情報図書館学類の授業を表示
 
-    .col-sm-4.text-center
-      .panel.panel-default
-        .panel-body
-          = fa_icon "book", class: 'fa-5x'
-          p
-            br
-            |知識情報図書館学類の授業を表示
+    / .col-sm-4.text-center
+    /   .panel.panel-default
+    /     .panel-body
+    /       = fa_icon "book", class: 'fa-5x'
+    /       p
+    /         br
+    /         |知識情報図書館学類の授業を表示
 
-    .col-sm-4.text-center
-      .panel.panel-default
-        .panel-body
-          = fa_icon "book", class: 'fa-5x'
-          p
-            br
-            |知識情報図書館学類の授業を表示
+    / .col-sm-4.text-center
+    /   .panel.panel-default
+    /     .panel-body
+    /       = fa_icon "book", class: 'fa-5x'
+    /       p
+    /         br
+    /         |知識情報図書館学類の授業を表示
 
-    .col-sm-4.text-center
-      .panel.panel-default
-        .panel-body
-          = fa_icon "book", class: 'fa-5x'
-          p
-            br
-            |知識情報図書館学類の授業を表示
+    / .col-sm-4.text-center
+    /   .panel.panel-default
+    /     .panel-body
+    /       = fa_icon "book", class: 'fa-5x'
+    /       p
+    /         br
+    /         |知識情報図書館学類の授業を表示
 
   - unless  @subjects.nil?
     - if @subjects.empty?
@@ -77,7 +80,7 @@ nav.navbar.navbar-default
               td = link_to subject.title, subject_path(id: subject.id)
               td
                 - subject.teachers.each do |teacher|
-                  span #{teacher.name}
+                  span = link_to teacher.name, teacher_path(id: teacher.id)
               td #{subject.semester}
               td #{subject.default_grade}
               td #{subject.credit}
