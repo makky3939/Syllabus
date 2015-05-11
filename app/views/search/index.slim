@@ -64,18 +64,20 @@ nav.navbar.navbar-default
       table.table
         thead
           tr
-            th 科目番号
-            th 科目名
-            th 指導教員
-            th 学期
-            th 標準履修年次
-            th 単位
+            th.col-xs-1 科目番号
+            th.col-xs-5 科目名
+            th.col-xs-3 指導教員
+            th.col-xs-1 学期
+            th.col-xs-1 標準履修年次
+            th.col-xs-1 単位
         tbody
           - @subjects.each do |subject|
             tr
               td #{subject.code}
               td = link_to subject.title, subject_path(id: subject.id)
               td
+                - subject.teachers.each do |teacher|
+                  span #{teacher.name}
               td #{subject.semester}
               td #{subject.default_grade}
               td #{subject.credit}
