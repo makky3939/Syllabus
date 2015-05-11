@@ -10,7 +10,7 @@
 
 # path = 'kdb_xxxxxxxxxxxxxx.tsv'
 
-puts 'Creating the Subject table'
+puts 'Creating tables'
 open(path) do |tsv|
   tsv.each.with_index(1) do |line, index|
     row = line.split "\t"
@@ -39,7 +39,7 @@ open(path) do |tsv|
       teacher = Teacher.find_by(name: name)
       if teacher.nil?
         teacher = Teacher.new(
-          name: name.encode('UTF-8')
+          name: name
         )
         teacher.save
       end
@@ -50,9 +50,7 @@ open(path) do |tsv|
       subject_teacher.save
     end
 
-    # if subject.save
     print "\rLine ##{index} "
-    # end
   end
 end
 puts 'done!'
