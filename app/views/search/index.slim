@@ -51,16 +51,17 @@
           p 該当なし
 
     - unless  @subjects.empty?
-      p #{@subjects.size} 件
+      .alert.alert-success
+        p #{@subjects.size} 件の科目が該当しました
 
       table.table
         thead
           tr
             th.col-xs-1 科目番号
-            th.col-xs-5 科目名
+            th.col-xs-4 科目名
             th.col-xs-3 指導教員
             th.col-xs-1 学期
-            th.col-xs-1 標準履修年次
+            th.col-xs-2 標準履修年次
             th.col-xs-1 単位
         tbody
           - @subjects.each do |subject|
