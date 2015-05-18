@@ -1,23 +1,71 @@
+/ .container
+/   p = link_to 'Syllabus', search_index_path
+/   h1 subject#show
+/   p = @subject.title
+/   p = @subject.id
+/   p = @subject.allow_auditor
+/   p = @subject.code
+/   p = @subject.condition
+/   p = @subject.credit
+/   p = @subject.default_grade
+/   p = @subject.method
+/   p = @subject.location
+/   p = @subject.period
+/   p = @subject.semester
+/   p = @subject.title
+/   p = @subject.title_sub
+/   p = @subject.abstract
+/   p = @subject.note
+/   p = @subject.created_at
+/   p = @subject.updated_at
+/   ul
+/     - @subject.teachers.each do |teacher|
+/       li = link_to teacher.name, teacher_path(id: teacher.id)
+
 .container
-  p = link_to 'Syllabus', search_index_path
-  h1 subject#show
-  p = @subject.title
-  p = @subject.id
-  p = @subject.allow_auditor
-  p = @subject.code
-  p = @subject.condition
-  p = @subject.credit
-  p = @subject.default_grade
-  p = @subject.method
-  p = @subject.location
-  p = @subject.period
-  p = @subject.semester
-  p = @subject.title
-  p = @subject.title_sub
-  p = @subject.abstract
-  p = @subject.note
-  p = @subject.created_at
-  p = @subject.updated_at
-  ul
-    - @subject.teachers.each do |teacher|
-      li = link_to teacher.name, teacher_path(id: teacher.id)
+  .row
+    .col-xs-12
+      h1 = @subject.title
+      small = @subject.title_sub
+      hr
+      .row
+        .col-xs-12
+          h2 基本情報
+          dl
+            dd = @subject.title
+            dd = @subject.id
+            dd = @subject.allow_auditor
+            dd = @subject.code
+            dd = @subject.condition
+            dd = @subject.credit
+            dd = @subject.default_grade
+            dd = @subject.method
+            dd = @subject.location
+            dd = @subject.period
+            dd = @subject.semester
+            dd = @subject.title
+            dd = @subject.title_sub
+            dd = @subject.abstract
+            dd = @subject.note
+            dd = @subject.created_at
+            dd = @subject.updated_at
+
+          hr
+          h2 概要
+
+          blockquote
+            p = @subject.abstract
+            p = @subject.note
+
+          hr
+          h2 担当教員
+          - @subject.teachers.each do |teacher|
+            .col-xs-4
+              .media
+                .media-left
+                  a
+                    = image_tag "teachers/#{teacher.id}.png", :size => '64x64', :class => 'img-circle'
+                .media-body
+                  h4 = teacher.name
+                  p
+                    = link_to '教員の情報を見る', teacher_path(id: teacher.id)
