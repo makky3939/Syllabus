@@ -1,0 +1,27 @@
+doctype html
+html
+  head
+    title Syllabus
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => false
+    = javascript_include_tag 'application', 'data-turbolinks-track' => false
+    = csrf_meta_tags
+
+  body
+
+    nav.navbar.navbar-default
+      .container
+        .navbar-header
+          .navbar-brand
+            = link_to 'Syllabus', search_index_path
+        .navbar-collapse.pull-right
+          = form_tag search_index_path, :method => 'get', :class => 'navbar-form' do
+            .form-group
+              = text_field_tag 'word', params[:word], :class => 'form-control'
+              = submit_tag 'search', :name => nil, :class => 'btn btn-default'
+            
+    = yield
+
+    .row
+      .container
+        hr
+        p &copy; Syllabus

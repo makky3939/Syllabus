@@ -1,10 +1,23 @@
 .container
-  p = link_to 'Syllabus', search_index_path
-  h1 teacher#show
-  p = @teacher.id
-  p = @teacher.name
-  p = @teacher.created_at
-  p = @teacher.updated_at
-  ul
+  h1 = @teacher.name
+  hr
+  / p = @teacher.created_at
+  / p = @teacher.updated_at
+  = image_tag "teachers/#{@teacher.id}.png", :size => '192x192', :class => 'img-circle'
+  hr
+  .row
     - @teacher.subjects.each do |subject|
-      li = link_to subject.title, subject_path(id: subject.id)
+      .col-sm-4
+        .panel.panel-default
+          .panel-body
+            h4 = link_to subject.title, subject_path(id: subject.id)
+          .panel-footer
+            ul.list-inline
+              li
+                span.label.label-default = "#{subject.credit} 単位"
+              li
+                span.label.label-default = "#{subject.default_grade} 年対象"
+              li
+                span.label.label-default = "#{subject.semester}"
+              li
+                span.label.label-default = "#{subject.period}"
