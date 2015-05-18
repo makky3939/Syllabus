@@ -12,4 +12,5 @@
 !/log/.keep
 /tmp
 
+db/source
 config/database.yml
