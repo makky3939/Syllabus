@@ -13,4 +13,5 @@
 /tmp
 
 db/source
+public/images/teachers
 config/database.yml

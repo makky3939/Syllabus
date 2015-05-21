@@ -61,10 +61,10 @@
           h2 担当教員
           - @subject.teachers.each do |teacher|
             .col-xs-4
-              .media
+              p.media
                 .media-left
                   a
-                    = image_tag "teachers/#{teacher.id}.png", :size => '64x64', :class => 'img-circle'
+                    = image_tag teacher.face_path, :size => '64x64', :class => 'img-circle'
                 .media-body
                   h4 = teacher.name
                   p

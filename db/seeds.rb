@@ -55,5 +55,12 @@
 # end
 # puts 'done!'
 
-teacher = Teacher.find_by name: '松村 敦'
-teacher.update face_main: File.open(File.join(Rails.root, "/db/source/teachers/1685/picture.png"))
+teachers = YAML.load_file "db/source/teachers.yaml"
+
+teachers.each do |teacher|
+  puts teacher['name']
+  _teacher = Teacher.find_by name: teacher['name']
+  puts teacher['face_filename']
+  _teacher.update face_filename: teacher['face_filename']
+  File.copy_stream "db/source/teachers/#{teacher['face_filename']}", "public/images/teachers/#{teacher['face_filename']}"
+end
