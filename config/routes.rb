@@ -54,6 +54,8 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
 
+  root 'landing#index'
+
   resources :search, only: [:index]
 
   resources :subjects, only: [:show]
