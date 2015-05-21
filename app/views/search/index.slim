@@ -2,7 +2,7 @@
 
   - if @subjects.nil?
     .text-center
-      .alert.alert-info
+      .alert.alert-info.text-left
         p 検索ワードを入力してください
     / .col-sm-4.text-center
     /   .panel.panel-default
@@ -47,11 +47,11 @@
   - unless  @subjects.nil?
     - if @subjects.empty?
       .text-center
-        .alert.alert-info
+        .alert.alert-info.text-left
           p 該当なし
 
     - unless  @subjects.empty?
-      .alert.alert-success
+      .alert.alert-success.text-left
         p #{@subjects.size} 件の科目が該当しました
 
       table.table
