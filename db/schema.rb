@@ -11,9 +11,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 0) do
-=======
 ActiveRecord::Schema.define(version: 20150427222600) do
 
   create_table "labolatories", force: :cascade do |t|
@@ -48,13 +45,12 @@ ActiveRecord::Schema.define(version: 20150427222600) do
   end
 
   create_table "teachers", force: :cascade do |t|
-    t.string   "name",       limit: 255
-    t.binary   "face_main",  limit: 65535
-    t.binary   "face_sub",   limit: 65535
-    t.binary   "voice",      limit: 65535
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.string   "name",          limit: 255
+    t.string   "face_filename", limit: 255
+    t.string   "body_filename", limit: 255
+    t.binary   "voice",         limit: 65535
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
->>>>>>> 2a222aac463a1d81a061ca6b73e8087230ec4d84
 
 end
