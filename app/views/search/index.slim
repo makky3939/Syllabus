@@ -52,9 +52,9 @@
 
     - unless  @subjects.empty?
       .alert.alert-success.text-left
-        p #{@subjects.size} 件の科目が該当しました
+        p = page_entries_info @subjects
 
-      = page_entries_info @subjects
+      
 
       table.table
         thead
