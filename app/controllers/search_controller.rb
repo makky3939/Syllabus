@@ -1,7 +1,7 @@
 class SearchController < ApplicationController
   def index
     if params[:word] && !params[:word].empty?
-      @subjects = Subject.includes(:teachers).where(Subject.arel_table[:title].matches("%#{escape_like(params[:word])}%"))
+      @subjects = Subject.page(params[:page]).includes(:teachers).where(Subject.arel_table[:title].matches("%#{escape_like(params[:word])}%"))
     else
       @subjects = nil
     end
