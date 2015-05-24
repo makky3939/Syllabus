@@ -8,6 +8,10 @@
   = image_tag @teacher.face_path, :size => '192x192', :class => 'img-circle'
   = image_tag @teacher.body_path, :width => '192', :height => 'auto', :class => 'img-rounded'
   hr
+  .btn.btn-default#voice_sample
+    i.fa.fa-microphone.fa-fw
+    |Voice
+  hr
   .row
     - @teacher.subjects.each do |subject|
       .col-sm-4
