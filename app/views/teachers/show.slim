@@ -1,9 +1,12 @@
+= render partial: 'components/navbar'
+
 .container
   h1 = @teacher.name
   hr
   / p = @teacher.created_at
   / p = @teacher.updated_at
   = image_tag @teacher.face_path, :size => '192x192', :class => 'img-circle'
+  = image_tag @teacher.body_path, :width => '192', :height => 'auto', :class => 'img-rounded'
   hr
   .row
     - @teacher.subjects.each do |subject|
