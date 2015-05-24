@@ -9,4 +9,12 @@ class Teacher < ActiveRecord::Base
       return "/images/default/teacher.png"
     end
   end
+
+  def body_path
+    if self.body_filename
+      return "/images/teachers/#{self.body_filename}"
+    else
+      return "/images/default/teacher.png"
+    end
+  end
 end
