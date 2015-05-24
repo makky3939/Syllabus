@@ -6,7 +6,7 @@
 # if audio.canPlayType 'audio/mp3'
 #   alert 'mp3'
 
-$ ->
+$(document).on 'page:change', ->
   $('#voice_sample').on 'click', ->
     audio = new Audio '/audios/default/phone_vibration.mp3'
 
