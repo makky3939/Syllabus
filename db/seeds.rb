@@ -8,7 +8,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-path = 'kdb.tsv'
+path = 'db/source/kdb.tsv'
 
 puts 'Creating tables'
 open(path) do |tsv|
