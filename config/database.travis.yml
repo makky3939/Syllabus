@@ -1,4 +1,4 @@
 test:
   adapter: mysql2
-  database: Syllabus_test
+  database: Visubus_test
   username: root
