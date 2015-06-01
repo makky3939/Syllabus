@@ -1,13 +1,23 @@
 = render partial: 'components/navbar'
 
 .container
-  h1 = @teacher.name
+  h1
+    = @teacher.name
+    small = @teacher.kana
   hr
   .col-xs-12
+    p = @teacher.major
     / p = @teacher.created_at
-    / p = @teacher.updated_at
+    p = @teacher.updated_at
     = image_tag @teacher.face_path, :size => '192x192', :class => 'img-circle'
     = image_tag @teacher.body_path, :width => '192', :height => 'auto', :class => 'img-rounded'
+
+    blockquote
+      h4 = @teacher.theme
+      p = @teacher.description
+    h2 オフィスアワー
+    p = @teacher.room
+    p = @teacher.office_hour
     hr
     .btn.btn-default#voice_sample
       i.fa.fa-microphone.fa-fw
