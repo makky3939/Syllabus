@@ -55,15 +55,27 @@ open(path) do |tsv|
 end
 puts 'done!'
 
+
+FileUtils.mkdir_p('public/images/teachers') unless FileTest.exist?('public/images/teachers')
 teachers = YAML.load_file "db/source/teachers.yaml"
 
 teachers.each do |teacher|
   puts teacher['name']
   _teacher = Teacher.find_by name: teacher['name']
   unless _teacher.nil?
-    _teacher.update face_filename: teacher['face_filename']
-    File.copy_stream "db/source/teachers/#{teacher['face_filename']}", "public/images/teachers/#{teacher['face_filename']}"
-    _teacher.update body_filename: teacher['body_filename']
-    File.copy_stream "db/source/teachers/#{teacher['body_filename']}", "public/images/teachers/#{teacher['body_filename']}"
+    unless teacher['face_filename'] == 'nil'
+      _teacher.update face_filename: teacher['face_filename']
+      File.copy_stream "db/source/teachers/#{teacher['face_filename']}", "public/images/teachers/#{teacher['face_filename']}"
+    end
+    unless teacher['body_filename'] == 'nil'
+      _teacher.update body_filename: teacher['body_filename']
+      File.copy_stream "db/source/teachers/#{teacher['body_filename']}", "public/images/teachers/#{teacher['body_filename']}"
+    end
+    _teacher.update kana: teacher['kana']
+    _teacher.update major_id: teacher['major_id']
+    _teacher.update theme: teacher['theme']
+    _teacher.update description: teacher['description']
+    _teacher.update room: teacher['room']
+    _teacher.update office_hour: teacher['office_hour']
   end
 end
