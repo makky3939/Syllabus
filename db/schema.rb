@@ -46,8 +46,14 @@ ActiveRecord::Schema.define(version: 20150427222600) do
 
   create_table "teachers", force: :cascade do |t|
     t.string   "name",          limit: 255
+    t.string   "kana",          limit: 255
     t.string   "face_filename", limit: 255
     t.string   "body_filename", limit: 255
+    t.integer  "major_id",      limit: 4
+    t.string   "theme",         limit: 255
+    t.text     "description",   limit: 65535
+    t.string   "room",          limit: 255
+    t.string   "office_hour",   limit: 255
     t.binary   "voice",         limit: 65535
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
