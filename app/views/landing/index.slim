@@ -1,44 +1,52 @@
-section
+.section.section--blue
   .container
-    .text-center
-      h1 Visubus
-      p Imagine the future.
+    .col-xs-8.col-xs-offset-2
+      .col-xs-6
+        .text-center
+          h1 Visubus
+          p 履修に苦しむ、すべての人へ
+      .col-xs-6
+        .text-center
+          img.img-circle.anime-circle(src='/images/teachers/takaku_masao1.png' width='128' height='128')
+    / .col-xs-12
+    /   p
+    /     .col-xs-6.col-xs-offset-3
+    /       = form_tag search_index_path, :method => 'get', :class => '' do
 
-    p
-      .col-xs-6.col-xs-offset-3
-        = form_tag search_index_path, :method => 'get', :class => '' do
+    /         .input-group
+    /           = text_field_tag 'word', params[:word], :class => 'form-control'
+    /           span.input-group-btn
+    /             button.btn.btn-default(type='submit')
+    /               i.fa.fa-search
 
-          .input-group
-            = text_field_tag 'word', params[:word], :class => 'form-control'
-            span.input-group-btn
-              button.btn.btn-default(type='submit')
-                i.fa.fa-search
-
-section.bg-gray
+.section.section--light-gray
   .container
     .col-xs-12.col-sm-8.col-sm-offset-2
+      h2 履修にだって、こだわりたい
       p
         - 7.times.each
           = "なんか凄い説明文なんか凄い説明文なんか凄い説明文"
       hr
 
-section
+.section
   .container
     .col-xs-12.col-sm-8.col-sm-offset-2
+      h2 あなたが選ぶキャンパスライフ
       p
         - 7.times.each
           = "なんか凄い説明文なんか凄い説明文なんか凄い説明文"
       hr
 
-section.bg-gray
+.section.section--light-gray
   .container
     .col-xs-12.col-sm-8.col-sm-offset-2
+      h2 想像しよう、未来を
       p
         - 7.times.each
           = "なんか凄い説明文なんか凄い説明文なんか凄い説明文"
       hr
 
-section.half-height
+.section.section__height-harf
   .container
     .col-xs-12.col-sm-8.col-sm-offset-2.text-center
       p
