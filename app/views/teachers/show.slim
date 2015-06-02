@@ -1,19 +1,47 @@
 = render partial: 'components/navbar'
 
+.modal.fade#teacherBody(tabindex="-1" role="dialog" aria-labelledby="teacherBody" aria-hidden="true")
+  .modal-dialog
+    .modal-content
+      = image_tag @teacher.body_path, :width => '100%', :height => 'auto', :class => 'img-rounded'
+
 .container
-  h1 = @teacher.name
+  h1
+    = @teacher.name
   hr
-  .col-xs-12
-    / p = @teacher.created_at
-    / p = @teacher.updated_at
+  .col-xs-12.text-center
     = image_tag @teacher.face_path, :size => '192x192', :class => 'img-circle'
-    = image_tag @teacher.body_path, :width => '192', :height => 'auto', :class => 'img-rounded'
-    hr
-    .btn.btn-default#voice_sample
-      i.fa.fa-microphone.fa-fw
-      |Voice
+    p
+      .btn.btn-default(type='button' data-toggle="modal" data-target="#teacherBody")
+        i.fa.fa-plus
+      .btn.btn-default#voice_sample
+        i.fa.fa-microphone.fa-fw
+        |Voice
+    h1
+      = @teacher.name
+    p = @teacher.kana
+
   .col-xs-12
-    hr
+    h2 主専攻
+    blockquote
+      p = @teacher.major
+
+    h2 研究テーマ
+    blockquote
+      h3 = @teacher.theme
+      p = @teacher.description
+
+    h2 オフィスアワー
+    blockquote
+      p
+        |場所：
+        = @teacher.room
+      p
+        |時間帯：
+        = @teacher.office_hour
+
+  .col-xs-12
+    h2 担当科目
     .row
       - @teacher.subjects.each.with_index do |subject, index|
         - if index % 3 == 0
@@ -32,3 +60,8 @@
                   span.label.label-default = "#{subject.semester}"
                 li
                   span.label.label-default = "#{subject.period}"
+
+  .col-xs-12
+    p.text-right
+      |最終更新：
+      = @teacher.updated_at

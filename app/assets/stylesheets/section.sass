@@ -1,0 +1,28 @@
+.section
+  height: 66%
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: center
+
+  // Element
+  &__height-harf
+    height: 50%
+
+  &__height-quart
+    height: 25%
+
+  // Modifier
+  @mixin color($font, $background)
+    background: $background
+    h1, h2, h3, p
+      color: $font
+
+  &--blue
+    @include color($white, $blue)
+
+  &--light-gray
+    @include color($black, $light-gray)
+
+  &--black
+    @include color($white, $black)

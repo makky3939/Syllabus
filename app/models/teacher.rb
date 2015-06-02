@@ -17,4 +17,17 @@ class Teacher < ActiveRecord::Base
       return "/images/default/teacher.png"
     end
   end
+
+  def major
+    case self.major_id
+      when 0
+        '知識科学主専攻'
+      when 1
+        '情報資源経営主専攻'
+      when 2
+        '知識情報システム主専攻'
+      else
+        ''
+    end
+  end
 end
