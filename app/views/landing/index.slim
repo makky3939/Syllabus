@@ -1,22 +1,26 @@
-.section.section--blue
+= render partial: 'components/navbar'
+
+.section.section__fit-top.section__jumbotron.section--blue
   .container
     .col-xs-12.col-sm-8.col-sm-offset-2
       .col-xs-6
         h1 Visubus
         p 履修に苦しむ、すべての人へ
 
-        = form_tag search_index_path, :method => 'get', :class => '' do
+        = form_tag search_index_path, :method => 'get', :class => 'form' do
 
           .input-group
+            span.input-group-addon
+              i.fa.fa-search
             = text_field_tag 'word', params[:word], :class => 'form-control', :placeholder => '情報基礎'
-            span.input-group-btn
-              button.btn.btn-default(type='submit')
-                i.fa.fa-search
+            / span.input-group-btn
+            /   button.btn.btn-default(type='submit')
+            /     i.fa.fa-search
       / .col-xs-6
       /   .text-center
       /     img.img-circle.anime-circle(src='/images/teachers/takaku_masao1.png' width='128' height='128')
 
-.section.section--light-gray
+.section.section--gray
   .container
     .col-xs-12.col-sm-8.col-sm-offset-2
       h2 履修にだって、こだわりたい
@@ -34,7 +38,7 @@
           = "なんか凄い説明文なんか凄い説明文なんか凄い説明文"
       hr
 
-.section.section--light-gray
+.section.section--gray
   .container
     .col-xs-12.col-sm-8.col-sm-offset-2
       h2 想像しよう、未来を
@@ -43,16 +47,18 @@
           = "なんか凄い説明文なんか凄い説明文なんか凄い説明文"
       hr
 
-.section.section__height-harf.section--blue
+.section.section__height-harf.section__jumbotron.section--blue
   .container
     .col-xs-12.col-sm-8.col-sm-offset-2.text-center
       p
         = "今すぐ検索"
       .col-xs-12.col-sm-6.col-sm-offset-3
-        = form_tag search_index_path, :method => 'get', :class => '' do
+        = form_tag search_index_path, :method => 'get', :class => 'form' do
 
           .input-group
+            span.input-group-addon
+              i.fa.fa-search
             = text_field_tag 'word', params[:word], :class => 'form-control'
-            span.input-group-btn
-              button.btn.btn-default(type='submit')
-                i.fa.fa-search
+            / span.input-group-btn
+            /   button.btn.btn-default(type='submit')
+            /     i.fa.fa-search
