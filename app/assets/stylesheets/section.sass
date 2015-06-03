@@ -5,6 +5,9 @@
   justify-content: center
   align-items: center
 
+  &__fit-top
+    margin-top: -20px
+
   // Element
   &__height-harf
     height: 50%
@@ -21,8 +24,8 @@
   &--blue
     @include color($white, $blue)
 
-  &--light-gray
-    @include color($black, $light-gray)
+  &--gray
+    @include color($black, $gray + #222)
 
   &--black
     @include color($white, $black)

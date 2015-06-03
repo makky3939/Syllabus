@@ -5,8 +5,35 @@
 
   .navbar-brand
     &:hover
-      background: $dark-blue
       cursor: pointer
     a
-      color: $white
+      color: $white - #222
       text-decoration: none
+      font-weight: 100
+      letter-spacing: .06em
+      font-size: 26px
+      &:hover
+        color: $white
+
+  .navbar-form
+    .input-group
+      margin-left: 24px
+    input
+      min-width: 320px
+      box-shadow: none
+      outline: none
+      &:hover
+        background-color: $blue + #222
+      &:focus
+        background-color: $white
+        border: 0
+        outline: none
+        box-shadow: none
+
+    input,
+    span.input-group-addon
+      background-color: $blue + #111
+      border: 0
+
+    span.input-group-addon
+      color: $white
