@@ -6,10 +6,10 @@ require File.expand_path('../config/application', __FILE__)
 Rails.application.load_tasks
 
 namespace :unicorn do
-  desc "Start unicorn for development env."
+  desc "Start unicorn for production env."
   task(:start) {
     config = rails_root + "config/unicorn.rb"
-    sh "bundle exec unicorn_rails -c #{config} -E development -D"
+    sh "SECRET_KEY_BASE=$(rake secret) RAILS_SERVE_STATIC_FILES=true bundle exec unicorn_rails -c #{config} -E production -D"
   }
 
   desc "Stop unicorn"
