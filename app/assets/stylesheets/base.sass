@@ -4,22 +4,40 @@ body
   margin: 0
   padding: 0
   border: 0
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif
 p
   line-height: 1.6em
 
 .panel-footer .list-inline
   margin: 0
 
+.anime-circle-base
+  transform: scale3d(0, 0, 0)
+  opacity: 0
+  width: 100px
+  height: 100px
+
 .anime-circle
-  // animation: inout .9s
+  width: 100px
+  height: 100px
+  animation: inout 1s
   border: 2px solid $white
-  animation-iteration-count: infinite
   opacity: .7
+  transform: scale3d(1, 1, 1)
+  transition: background-color .2s linear
   &:hover
+    border: 2px solid $blue
     opacity: 1
 
 @keyframes inout
   0%
-    transform: scale(0, 0)
+    transform: scale3d(0, 0, 0)
   100%
-    transform: scale(1, 1)
+    transform: scale3d(1, 1, 1)
+
+.teacher
+  &__heading-name
+    margin-top: 60px
+
+  &__section-head
+    margin-top: 32px
