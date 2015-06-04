@@ -11,23 +11,23 @@
           h2 基本情報
           .col-xs-12
             dl
-              dd = @subject.title
-              dd = @subject.id
+              / dd = @subject.title
+              / dd = @subject.id
               dd = @subject.allow_auditor
               dd = @subject.code
-              dd = @subject.condition
+              / dd = @subject.condition
               dd = @subject.credit
               dd = @subject.default_grade
               dd = @subject.method
               dd = @subject.location
               dd = @subject.period
               dd = @subject.semester
-              dd = @subject.title
-              dd = @subject.title_sub
-              dd = @subject.abstract
-              dd = @subject.note
-              dd = @subject.created_at
-              dd = @subject.updated_at
+              / dd = @subject.title
+              / dd = @subject.title_sub
+              / dd = @subject.abstract
+              / dd = @subject.note
+              / dd = @subject.created_at
+              / # dd = @subject.updated_at
 
         .col-xs-12
           hr
@@ -35,6 +35,15 @@
           .col-xs-12
             blockquote
               p = @subject.abstract
+
+          h2 履修要件
+          .col-xs-12
+            blockquote
+              p = @subject.condition
+
+          h2 その他
+          .col-xs-12
+            blockquote
               p = @subject.note
 
         .col-xs-12

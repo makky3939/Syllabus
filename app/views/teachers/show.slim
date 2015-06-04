@@ -5,33 +5,39 @@
     .modal-content
       = image_tag @teacher.body_path, :width => '100%', :height => 'auto', :class => 'img-rounded'
 
-.container
+.container.teacher
   h1
     = @teacher.name
   hr
-  .col-xs-12.text-center
-    = image_tag @teacher.face_path, :size => '192x192', :class => 'img-circle'
-    p
-      .btn.btn-default(type='button' data-toggle="modal" data-target="#teacherBody")
-        i.fa.fa-plus
-      .btn.btn-default#voice_sample
-        i.fa.fa-microphone.fa-fw
-        |Voice
-    h1
-      = @teacher.name
-    p = @teacher.kana
+  .col-xs-12
+    .col-xs-6.text-right
+      = image_tag @teacher.face_path, :size => '192x192', :class => 'img-circle'
+
+    .col-xs-6.text-left
+      h1.teacher__heading-name
+        = @teacher.name
+      p = @teacher.kana
+
+    .col-xs-12.text-center
+      p
+        .btn.btn-link(type='button' data-toggle="modal" data-target="#teacherBody")
+          |全体像を見る
+        |/
+        .btn.btn-link#voice_sample
+          i.fa.fa-microphone.fa-fw
+          |声を聞く
 
   .col-xs-12
-    h2 主専攻
+    h2.teacher__section-head 主専攻
     blockquote
       p = @teacher.major
 
-    h2 研究テーマ
+    h2.teacher__section-head 研究テーマ
     blockquote
       h3 = @teacher.theme
       p = @teacher.description
 
-    h2 オフィスアワー
+    h2.teacher__section-head オフィスアワー
     blockquote
       p
         |場所：
