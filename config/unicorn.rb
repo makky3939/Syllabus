@@ -4,8 +4,9 @@ worker_processes Integer(ENV["WEB_CONCURRENCY"] || 3)
 timeout 15
 preload_app true
 
-listen 8080, :tcp_nopush => true
-pid "/tmp/unicorn.pid"
+#listen 8080, :tcp_nopush => true
+listen "/home/makky/Visubus/tmp/sockets/unicorn.sock"
+pid "tmp/unicorn.pid"
 
 before_fork do |server, worker|
   Signal.trap 'TERM' do
