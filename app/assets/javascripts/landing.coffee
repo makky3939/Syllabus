@@ -26,7 +26,7 @@ class Teacher
 
     $.each teachers, (key, value) ->
       $li = $ '<li>',
-        'title': 'この先生のページを見る'
+        'title': 'この先生の担当科目を調べる'
         'data-toggle': 'tooltip'
         'data-placement': 'bottom'
 
