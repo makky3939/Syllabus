@@ -62,4 +62,7 @@ Rails.application.routes.draw do
 
   resources :teachers, only: [:show]
 
+  resource :api , only: [] do
+    resources :teachers, only: [:index]
+  end
 end
