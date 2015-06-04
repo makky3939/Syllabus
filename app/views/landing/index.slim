@@ -28,13 +28,10 @@
         - 7.times.each
           = "なんか凄い説明文なんか凄い説明文なんか凄い説明文"
       hr
-      ul.list-inline.text-center
-        li(data-toggle='tooltip' data-placement='bottom' title='この先生のページを見る')
-          img.img-circle.anime-circle(src='/images/teachers/takaku_masao1.png' width='100' height='100')
-        li(data-toggle='tooltip' data-placement='bottom' title='この先生のページを見る')
-          img.img-circle.anime-circle(src='/images/teachers/takaku_masao1.png' width='100' height='100')
-        li(data-toggle='tooltip' data-placement='bottom' title='この先生のページを見る')
-          img.img-circle.anime-circle(src='/images/teachers/takaku_masao1.png' width='100' height='100')
+      ul.list-inline.text-center#js-teacher-faces
+      .text-right
+        .btn.btn-link.js-teacher-refersh
+          i.fa.fa-refresh
 
 .section
   .container
