@@ -6,7 +6,7 @@
       .col-xs-6
         h1 Visubus
         p 履修に苦しむ、すべての人へ
-
+        hr
         = form_tag search_index_path, :method => 'get', :class => 'form' do
 
           .input-group
@@ -50,6 +50,21 @@
         - 7.times.each
           = "なんか凄い説明文なんか凄い説明文なんか凄い説明文"
       hr
+
+.section.section__height-eighth
+  .container.text-center
+    .col-xs-4
+      p
+        b 17000
+        |+  subjects
+    .col-xs-4
+      p
+        b 40
+        |+  pictures
+    .col-xs-4
+      p
+        b 100
+        |+  voices
 
 .section.section__height-harf.section__jumbotron.section--blue
   .container
