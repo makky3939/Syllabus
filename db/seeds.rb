@@ -57,6 +57,7 @@ puts 'done!'
 
 
 FileUtils.mkdir_p('public/images/teachers') unless FileTest.exist?('public/images/teachers')
+FileUtils.mkdir_p('public/audios/teachers') unless FileTest.exist?('public/audios/teachers')
 teachers = YAML.load_file "db/source/teachers.yaml"
 
 teachers.each do |teacher|
@@ -65,11 +66,15 @@ teachers.each do |teacher|
   unless _teacher.nil?
     unless teacher['face_filename'] == 'nil'
       _teacher.update face_filename: teacher['face_filename']
-      File.copy_stream "db/source/teachers/#{teacher['face_filename']}", "public/images/teachers/#{teacher['face_filename']}"
+      File.copy_stream "db/source/teachers/images/#{teacher['face_filename']}", "public/images/teachers/#{teacher['face_filename']}"
     end
     unless teacher['body_filename'] == 'nil'
       _teacher.update body_filename: teacher['body_filename']
-      File.copy_stream "db/source/teachers/#{teacher['body_filename']}", "public/images/teachers/#{teacher['body_filename']}"
+      File.copy_stream "db/source/teachers/images/#{teacher['body_filename']}", "public/images/teachers/#{teacher['body_filename']}"
+    end
+    unless teacher['voice_filename'] == 'nil'
+      _teacher.update voice_filename: teacher['voice_filename']
+      File.copy_stream "db/source/teachers/audios/#{teacher['voice_filename']}", "public/audios/teachers/#{teacher['voice_filename']}"
     end
     _teacher.update kana: teacher['kana']
     _teacher.update major_id: teacher['major_id']
