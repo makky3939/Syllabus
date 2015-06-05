@@ -17,6 +17,7 @@ gem 'jbuilder', '~> 2.0'
 
 # css
 gem 'sass-rails', '~> 5.0'
+gem "autoprefixer-rails"
 
 # js
 gem 'uglifier', '>= 1.3.0'
