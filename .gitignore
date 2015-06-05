@@ -14,5 +14,6 @@
 
 db/source
 public/images/teachers
+public/audios/teachers
 public/audios/subjects
 config/database.yml
