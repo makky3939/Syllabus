@@ -20,12 +20,26 @@
 
     .col-xs-12.text-center
       p
-        .btn.btn-link(type='button' data-toggle="modal" data-target="#teacherBody")
-          |全体像を見る
-        |/
-        .btn.btn-link#voice_sample
-          i.fa.fa-microphone.fa-fw
-          |声を聞く
+
+        - if @teacher.body_filename
+          .btn.btn-link(type='button' data-toggle="modal" data-target="#teacherBody")
+            |全体像を見る
+          |/
+
+        - unless @teacher.body_filename
+          .btn.btn-link(data-toggle='tooltip' data-placement='bottom' title='写真が登録されていません')
+            |全体像を見る
+          |/
+
+        - if @teacher.voice_filename
+          .btn.btn-link#js-voice-teacher*{'data-voice' => @teacher.voice_filename}
+            i.fa.fa-microphone.fa-fw
+            |声を聞く
+
+        - unless @teacher.voice_filename
+          .btn.btn-link(data-toggle='tooltip' data-placement='bottom' title='声が登録されていません')
+            i.fa.fa-microphone.fa-fw
+            |声を聞く
 
   .col-xs-12
     h2.teacher__section-head 主専攻
