@@ -10,7 +10,7 @@ class CreateTeachers < ActiveRecord::Migration
       t.text :description
       t.string :room
       t.string :office_hour
-      t.binary :voice
+      t.string :voice_filename
       t.timestamps null: false
     end
   end

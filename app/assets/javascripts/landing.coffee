@@ -57,10 +57,8 @@ class Teacher
 
 teacher = new Teacher()
 
-$(document).on 'ready', ->
-  $('[data-toggle="tooltip"]').tooltip()
-
 $(document).on 'page:change', ->
+  $('[data-toggle="tooltip"]').tooltip()
   if document.location.pathname == '/'
     teacher.refresh()
 
