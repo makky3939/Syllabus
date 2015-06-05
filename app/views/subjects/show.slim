@@ -10,24 +10,31 @@
         .col-xs-12
           h2 基本情報
           .col-xs-12
-            dl
-              / dd = @subject.title
-              / dd = @subject.id
-              dd = @subject.allow_auditor
-              dd = @subject.code
-              / dd = @subject.condition
-              dd = @subject.credit
-              dd = @subject.default_grade
-              dd = @subject.method
-              dd = @subject.location
-              dd = @subject.period
-              dd = @subject.semester
-              / dd = @subject.title
-              / dd = @subject.title_sub
-              / dd = @subject.abstract
-              / dd = @subject.note
-              / dd = @subject.created_at
-              / # dd = @subject.updated_at
+            blockquote
+              p
+                |科目等履修生：
+                = @subject.allow_auditor
+              p
+                |科目コード：
+                = @subject.code
+              p
+                |単位数：
+                = @subject.credit
+              p
+                |標準履修年次：
+                = @subject.default_grade
+              p
+                |method：
+                = @subject.method
+              p
+                |教室：
+                = @subject.location
+              p
+                |限：
+                = @subject.period
+              p
+                |時期：
+                = @subject.semester
 
         .col-xs-12
           hr
