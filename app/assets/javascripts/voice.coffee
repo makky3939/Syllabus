@@ -29,3 +29,26 @@ $(document).on 'page:change', ->
       $button.removeClass 'disabled'
       return
     return
+
+  $('#js-voice-subject').on 'click', ->
+    filename = $(@).data('voice')
+    console.log filename
+    # audio = new Audio "/audios/default/phone_vibration.mp3
+    audio = new Audio "/audios/subjects/#{filename}"
+
+    $audio = $ audio
+    $button = $ @
+
+    $audio.on 'loadedmetadata', ->
+      # console.log audio.duration
+      audio.play()
+      return
+
+    $audio.on 'playing', ->
+      $button.addClass 'disabled'
+      return
+
+    $audio.on 'ended', ->
+      $button.removeClass 'disabled'
+      return
+    return
