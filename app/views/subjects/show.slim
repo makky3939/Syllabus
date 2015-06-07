@@ -6,83 +6,85 @@
       h1 = @subject.title
       small = @subject.title_sub
       hr
+
+      h2 担当教員
       .row
-        .col-xs-12
-          h2 基本情報
-          .col-xs-12
-            blockquote
-              p
-                |科目等履修生：
-                = @subject.allow_auditor
-              p
-                |科目コード：
-                = @subject.code
-              p
-                |単位数：
-                = @subject.credit
-              p
-                |標準履修年次：
-                = @subject.default_grade
-              p
-                |method：
-                = @subject.method
-              p
-                |教室：
-                = @subject.location
-              p
-                |限：
-                = @subject.period
-              p
-                |時期：
-                = @subject.semester
+        - @subject.teachers.each do |teacher|
+          .col-xs-4
+            p.media
+              .media-left
+                a(data-toggle='tooltip' data-placement='bottom' title='担当教員の詳細を知る' href="#{teacher_path(id: teacher.id)}")
+                  = image_tag teacher.face_path, :size => '64x64', :class => 'img-circle'
+              .media-body
+                h4 = teacher.name
+                p
+                  / = link_to '教員の情報を見る', teacher_path(id: teacher.id)
+                  = link_to '科目名を読み上げてもらう', teacher_path(id: teacher.id)
+                  .btn.btn-link#js-voice-subject*{'data-voice' => @teacher.voice_filename}
+                    i.fa.fa-microphone.fa-fw
+                    |声を聞く
+      hr
+  .row
+    .col-xs-8
+      h2 概要
+      .col-xs-12
+        blockquote
+          p = @subject.abstract
 
-        .col-xs-12
-          hr
-          h2 概要
-          .col-xs-12
-            blockquote
-              p = @subject.abstract
+      h2 履修要件
+      .col-xs-12
+        blockquote
+          p = @subject.condition
 
-          h2 履修要件
-          .col-xs-12
-            blockquote
-              p = @subject.condition
+      h2 その他
+      .col-xs-12
+        blockquote
+          p = @subject.note
 
-          h2 その他
-          .col-xs-12
-            blockquote
-              p = @subject.note
-
+      - unless @subject.same_subjects.empty?
         .col-xs-12
           hr
-          h2 担当教員
-          - @subject.teachers.each do |teacher|
-            .col-xs-4
-              p.media
-                .media-left
-                  a
-                    = image_tag teacher.face_path, :size => '64x64', :class => 'img-circle'
-                .media-body
-                  h4 = teacher.name
-                  p
-                    = link_to '教員の情報を見る', teacher_path(id: teacher.id)
-
-        - unless @subject.same_subjects.empty?
-          .col-xs-12
-            hr
-            h2 同名の科目
+          h2 同名の科目
+          .row
             - @subject.same_subjects.each do |subject|
-              .col-sm-4
-                .panel.panel-default
+              .col-sm-6
+                .panel.panel-default.same-subject
                   .panel-body
                     h4 = link_to subject.title, subject_path(id: subject.id)
-                  .panel-footer
+                  .panel-footer.same-subject__footer
                     ul.list-inline
                       li
-                        span.label.label-default = "#{subject.credit} 単位"
+                        span.label.label-default.same-subject__tag = "#{subject.credit} 単位"
                       li
-                        span.label.label-default = "#{subject.default_grade} 年対象"
+                        span.label.label-default.same-subject__tag = "#{subject.default_grade} 年対象"
                       li
-                        span.label.label-default = "#{subject.semester}"
+                        span.label.label-default.same-subject__tag = "#{subject.semester}"
                       li
-                        span.label.label-default = "#{subject.period}"
+                        span.label.label-default.same-subject__tag = "#{subject.period}"
+
+    .col-xs-4
+      h2 基本情報
+      p
+        |科目コード：
+        b = @subject.code
+      p
+        |標準履修年次：
+        b = @subject.default_grade
+      p
+        |単位数：
+        b = @subject.credit
+      p
+        |教室：
+        b = @subject.location
+      p
+        |限：
+        b = @subject.period
+      p
+        |時期：
+        b = @subject.semester
+      p
+        |科目等履修生：
+        b = @subject.allow_auditor
+      / p
+      /   |method：
+      /   b = @subject.method
