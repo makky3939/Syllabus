@@ -17,12 +17,9 @@
                   = image_tag teacher.face_path, :size => '64x64', :class => 'img-circle'
               .media-body
                 h4 = teacher.name
-                p
-                  / = link_to '教員の情報を見る', teacher_path(id: teacher.id)
-                  = link_to '科目名を読み上げてもらう', teacher_path(id: teacher.id)
-                  .btn.btn-link#js-voice-subject*{'data-voice' => @teacher.voice_filename}
-                    i.fa.fa-microphone.fa-fw
-                    |声を聞く
+                a.btn.btn-link#js-voice-subject*{'data-voice' => teacher.subject_voice_file_name(@subject.id)}
+                  i.fa.fa-microphone.fa-fw
+                  |科目名を読み上げてもらう
       hr
   .row
     .col-xs-8
