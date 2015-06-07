@@ -84,3 +84,16 @@ teachers.each do |teacher|
     _teacher.update office_hour: teacher['office_hour']
   end
 end
+
+FileUtils.mkdir_p('public/audios/subjects') unless FileTest.exist?('public/audios/subjects')
+subjects = YAML.load_file "db/source/subjects.yaml"
+
+subjects.each do |subject|
+  subject_name = Subject.find_by id: subject['id']
+  subject['teachers'].each do |teacher|
+    _teacher = Teacher.find_by name: teacher['name']
+    st = SubjectTeacher.find_by(:subject_id => subject['id'], :teacher_id => _teacher.id)
+    st.update voice_filename: teacher['voice_filename']
+    File.copy_stream "db/source/subjects/audios/#{teacher['voice_filename']}", "public/audios/subjects/#{teacher['voice_filename']}"
+  end
+end
