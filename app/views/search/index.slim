@@ -6,45 +6,6 @@
     .text-center
       .alert.alert-info.text-left
         p 検索ワードを入力してください
-    / .col-sm-4.text-center
-    /   .panel.panel-default
-    /     .panel-body
-    /       = fa_icon "book", class: 'fa-5x'
-    /       p
-    /         br
-    /         |知識情報図書館学類の授業を表示
-
-    / .col-sm-4.text-center
-    /   .panel.panel-default
-    /     .panel-body
-    /       = fa_icon "book", class: 'fa-5x'
-    /       p
-    /         br
-    /         |知識情報図書館学類の授業を表示
-
-    / .col-sm-4.text-center
-    /   .panel.panel-default
-    /     .panel-body
-    /       = fa_icon "book", class: 'fa-5x'
-    /       p
-    /         br
-    /         |知識情報図書館学類の授業を表示
-
-    / .col-sm-4.text-center
-    /   .panel.panel-default
-    /     .panel-body
-    /       = fa_icon "book", class: 'fa-5x'
-    /       p
-    /         br
-    /         |知識情報図書館学類の授業を表示
-
-    / .col-sm-4.text-center
-    /   .panel.panel-default
-    /     .panel-body
-    /       = fa_icon "book", class: 'fa-5x'
-    /       p
-    /         br
-    /         |知識情報図書館学類の授業を表示
 
   - unless  @subjects.nil?
     - if @subjects.empty?
@@ -53,30 +14,39 @@
           p 該当なし
 
     - unless  @subjects.empty?
-      .alert.alert-success.text-left
+      .alert
         p = page_entries_info @subjects
 
-      
+      / Basic layout
+      / table.table
+      /   thead
+      /     tr
+      /       th.col-xs-1 科目番号
+      /       th.col-xs-4 科目名
+      /       th.col-xs-3 指導教員
+      /       th.col-xs-1 学期
+      /       th.col-xs-2 標準履修年次
+      /       th.col-xs-1 単位
+      /   tbody
+      /     - @subjects.each do |subject|
+      /       tr
+      /         td #{subject.code}
+      /         td = link_to subject.title, subject_path(id: subject.id)
+      /         td
+      /           - subject.teachers.each do |teacher|
+      /             span = link_to teacher.name, teacher_path(id: teacher.id)
+      /         td #{subject.semester}
+      /         td #{subject.default_grade}
+      /         td #{subject.credit}
 
-      table.table
-        thead
-          tr
-            th.col-xs-1 科目番号
-            th.col-xs-4 科目名
-            th.col-xs-3 指導教員
-            th.col-xs-1 学期
-            th.col-xs-2 標準履修年次
-            th.col-xs-1 単位
-        tbody
-          - @subjects.each do |subject|
-            tr
-              td #{subject.code}
-              td = link_to subject.title, subject_path(id: subject.id)
-              td
-                - subject.teachers.each do |teacher|
-                  span = link_to teacher.name, teacher_path(id: teacher.id)
-              td #{subject.semester}
-              td #{subject.default_grade}
-              td #{subject.credit}
-
-      = paginate @subjects
+      / New layout
+      - @subjects.each do |subject|
+        .subject
+          h3.subject__head = link_to subject.title, subject_path(id: subject.id)
+          ul.subject__tags.list-inline
+            li = subject.code
+            - subject.tags.each do |tag|
+              span.subject__tag = tag
+          p.subject__abstract = subject.abstract_abstract
+      .row
+        = paginate @subjects
