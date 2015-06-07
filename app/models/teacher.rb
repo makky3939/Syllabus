@@ -20,7 +20,12 @@ class Teacher < ActiveRecord::Base
 
   def subject_voice_file_name(subject_id)
     teacher_id = self.id
-    SubjectTeacher.find_by(:subject_id => subject_id, :teacher_id => teacher_id).voice_filename
+    st = SubjectTeacher.find_by(:subject_id => subject_id, :teacher_id => teacher_id)
+    if st.nil?
+      false
+    else
+      st
+    end
   end
 
   def major
