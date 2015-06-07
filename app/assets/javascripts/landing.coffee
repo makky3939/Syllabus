@@ -13,11 +13,13 @@ class Teacher
 
   show = ->
     $.each $list.find('.img-circle'), (key, value) ->
-      setTimeout ->
-        $ value
-          .addClass 'anime-circle'
-          .removeClass 'anime-circle-base'
-      , delay * (key + 1)
+      $(value).on 'load', ->
+        setTimeout ->
+          $ value
+            .addClass 'anime-circle'
+            .removeClass 'anime-circle-base'
+        , (delay * (key + 1))
+        return
       return
     return
 
