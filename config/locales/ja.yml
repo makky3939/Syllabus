@@ -1,0 +1,16 @@
+ja:
+  views:
+    pagination:
+      first:    "&laquo;"
+      last:     "&raquo;"
+      previous: "&lsaquo;"
+      next:     "&rsaquo;"
+      truncate: "&hellip;"
+  helpers:
+    page_entries_info:
+      one_page:
+        display_entries:
+          one: "1件を表示しています"
+          other: "<b>%{count}</b>件を表示しています"
+      more_pages:
+        display_entries: "<b>%{total}</b>件の中から<b>%{first}件目&nbsp;から&nbsp;%{last}件目</b>を表示しています</b>"
