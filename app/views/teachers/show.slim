@@ -67,19 +67,19 @@
         - if index % 3 == 0
           .row
         .col-sm-4
-          .panel.panel-default
+          .panel.panel-default.same-subject
             .panel-body
               h4 = link_to subject.title, subject_path(id: subject.id)
-            .panel-footer
+            .panel-footer.same-subject__footer
               ul.list-inline
                 li
-                  span.label.label-default = "#{subject.credit} 単位"
+                  span.label.label-default.same-subject__tag = "#{subject.credit} 単位"
                 li
-                  span.label.label-default = "#{subject.default_grade} 年対象"
+                  span.label.label-default.same-subject__tag = "#{subject.default_grade} 年対象"
                 li
-                  span.label.label-default = "#{subject.semester}"
+                  span.label.label-default.same-subject__tag = "#{subject.semester}"
                 li
-                  span.label.label-default = "#{subject.period}"
+                  span.label.label-default.same-subject__tag = "#{subject.period}"
 
   .col-xs-12
     p.text-right

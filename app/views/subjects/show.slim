@@ -45,27 +45,6 @@
         blockquote
           p = @subject.note
 
-      - unless @subject.same_subjects.empty?
-        .col-xs-12
-          hr
-          h2 同名の科目
-          .row
-            - @subject.same_subjects.each do |subject|
-              .col-sm-6
-                .panel.panel-default.same-subject
-                  .panel-body
-                    h4 = link_to subject.title, subject_path(id: subject.id)
-                  .panel-footer.same-subject__footer
-                    ul.list-inline
-                      li
-                        span.label.label-default.same-subject__tag = "#{subject.credit} 単位"
-                      li
-                        span.label.label-default.same-subject__tag = "#{subject.default_grade} 年対象"
-                      li
-                        span.label.label-default.same-subject__tag = "#{subject.semester}"
-                      li
-                        span.label.label-default.same-subject__tag = "#{subject.period}"
-
     .col-xs-4
       h2 基本情報
       p
@@ -92,3 +71,25 @@
       / p
       /   |method：
       /   b = @subject.method
+
+  .row
+    - unless @subject.same_subjects.empty?
+      .col-xs-12
+        hr
+        h2 同名の科目
+        .row
+          - @subject.same_subjects.each do |subject|
+            .col-sm-4
+              .panel.panel-default.same-subject
+                .panel-body
+                  h4 = link_to subject.title, subject_path(id: subject.id)
+                .panel-footer.same-subject__footer
+                  ul.list-inline
+                    li
+                      span.label.label-default.same-subject__tag = "#{subject.credit} 単位"
+                    li
+                      span.label.label-default.same-subject__tag = "#{subject.default_grade} 年対象"
+                    li
+                      span.label.label-default.same-subject__tag = "#{subject.semester}"
+                    li
+                      span.label.label-default.same-subject__tag = "#{subject.period}"
