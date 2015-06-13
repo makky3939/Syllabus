@@ -28,6 +28,8 @@ gem 'jquery-rails'
 gem 'bootstrap-sass', '~> 3.3.4'
 gem "font-awesome-rails"
 
+# Image magick
+gem 'rmagick'
 
 gem 'sdoc', '~> 0.4.0', group: :doc
 
