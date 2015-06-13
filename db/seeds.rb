@@ -55,6 +55,25 @@ open(path) do |tsv|
 end
 puts 'done!'
 
+def resize(path, _filename, format, type)
+  hex = (0...32).map { ('a'..'z').to_a[rand(26)] }.join
+  filename = "#{hex}.#{format}"
+  original = Magick::ImageList.new "db/source/teachers/#{path}/#{_filename}"
+  if type == 'face'
+    image = original.resize_to_fit(512, 512)
+  else
+    image = original.resize_to_fit(1280, 1280)
+  end
+  image.write "public/#{path}/teachers/#{filename}"
+  return filename
+end
+
+def cp2(path, _filename, format)
+  hex = (0...32).map { ('a'..'z').to_a[rand(26)] }.join
+  filename = "#{hex}.#{format}"
+  File.copy_stream "db/source/teachers/#{path}/#{_filename}", "public/#{path}/teachers/#{filename}"
+  return filename
+end
 
 FileUtils.mkdir_p('public/images/teachers') unless FileTest.exist?('public/images/teachers')
 FileUtils.mkdir_p('public/audios/teachers') unless FileTest.exist?('public/audios/teachers')
@@ -65,16 +84,16 @@ teachers.each do |teacher|
   _teacher = Teacher.find_by name: teacher['name']
   unless _teacher.nil?
     unless teacher['face_filename'] == 'nil'
-      _teacher.update face_filename: teacher['face_filename']
-      File.copy_stream "db/source/teachers/images/#{teacher['face_filename']}", "public/images/teachers/#{teacher['face_filename']}"
+      fn = resize('images', teacher['face_filename'], 'png', 'face')
+      _teacher.update face_filename: fn
     end
     unless teacher['body_filename'] == 'nil'
-      _teacher.update body_filename: teacher['body_filename']
-      File.copy_stream "db/source/teachers/images/#{teacher['body_filename']}", "public/images/teachers/#{teacher['body_filename']}"
+      fn = resize('images', teacher['body_filename'], 'png', 'body')
+      _teacher.update body_filename: fn
     end
     unless teacher['voice_filename'] == 'nil'
-      _teacher.update voice_filename: teacher['voice_filename']
-      File.copy_stream "db/source/teachers/audios/#{teacher['voice_filename']}", "public/audios/teachers/#{teacher['voice_filename']}"
+      fn = cp2('audios', teacher['voice_filename'], 'mp3')
+      _teacher.update voice_filename: fn
     end
     _teacher.update kana: teacher['kana']
     _teacher.update major_id: teacher['major_id']

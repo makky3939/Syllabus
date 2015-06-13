@@ -19,7 +19,7 @@
                 h4 = teacher.name
 
                 - if teacher.subject_voice_file_name(@subject.id)
-                  a.btn.btn-link#js-voice-subject*{'data-voice' => teacher.subject_voice_file_name(@subject.id)}
+                  a.btn.btn-link.js-voice-subject*{'data-voice' => teacher.subject_voice_file_name(@subject.id)}
                     i.fa.fa-microphone.fa-fw
                     |科目名を読み上げてもらう
 

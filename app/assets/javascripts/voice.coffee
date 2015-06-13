@@ -30,7 +30,7 @@ $(document).on 'page:change', ->
       return
     return
 
-  $('#js-voice-subject').on 'click', ->
+  $('.js-voice-subject').on 'click', ->
     filename = $(@).data('voice')
     console.log filename
     # audio = new Audio "/audios/default/phone_vibration.mp3
