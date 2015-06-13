@@ -52,6 +52,8 @@ class Subject < ActiveRecord::Base
           '2年次科目'
         when 'GE4'
           '学類共通専門科目'
+        when 'GE5'
+          '専門科目必修'
         when 'GE6'
           '知識科学主専攻'
         when 'GE7'
@@ -59,7 +61,7 @@ class Subject < ActiveRecord::Base
         when 'GE8'
           '情報経営・図書館主専攻'
         else
-          'none'
+          'その他'
       end
     end
 
