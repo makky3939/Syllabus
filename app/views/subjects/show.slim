@@ -72,6 +72,25 @@
       /   |method：
       /   b = @subject.method
 
+      h2 時間割
+      table.table.table-bordered
+        thead
+          tr
+            - ['\\', '月', '火', '水', '木', '金'].each do |day|
+              th = day
+
+        tbody
+          - [1, 2, 3, 4, 5, 6].each do |period|
+            tr
+              th
+                = period
+              - ['月', '火', '水', '木', '金'].each do |day|
+                - if @subject.timetable[:day] == day && @subject.timetable[:period].include?(period)
+                  td.info = ''
+                - else
+                  td = ''
+
+
   .row
     - unless @subject.same_subjects.empty?
       .col-xs-12

@@ -19,6 +19,19 @@ class Subject < ActiveRecord::Base
     end
   end
 
+  def timetable
+    _period = self.period
+    day = _period[0]
+    puts day
+    _period = _period.delete(day)
+    period = _period.split(',').map{|item|
+      unless item.nil?
+        item.to_i
+      end
+    }
+    return {day: day, period: period}
+  end
+
   def tags
     code = self.code
 
