@@ -16,6 +16,10 @@
             / span.input-group-btn
             /   button.btn.btn-default(type='submit')
             /     i.fa.fa-search
+        .text-center
+          p
+            |または
+            a.btn.btn-link(href='teachers') 教員の一覧を見る
       / .col-xs-6
       /   .text-center
       /     img.img-circle.anime-circle(src='/images/teachers/takaku_masao1.png' width='128' height='128')
@@ -31,7 +35,7 @@
       hr
       ul.list-inline.text-center#js-teacher-faces
       .text-right
-        .btn.btn-link.js-teacher-refersh
+        .btn.btn-default.js-teacher-refersh
           i.fa.fa-refresh
 
 .section
@@ -43,7 +47,15 @@
         |しかし、声は講義における重要な要素の１つです。
         |Visubusでは、担当教員の声を聴くことが出来ます。
       hr
-      small （ランダムで再生ボタンが表示される）
+      .text-center
+        .btn.btn-default.js-voice-teacher*{'data-voice' => ''}
+          i.fa.fa-microphone.fa-fw
+          |声を聞く
+        p
+          a.js-teacher-link() この教員のページへ
+      .text-right
+        .btn.btn-default.js-teacher-refersh
+          i.fa.fa-refresh
 
 .section.section--gray
   .container
@@ -54,7 +66,16 @@
         |担当教員に連絡を取りたい場合や研究室で扱われているテーマが知りたいと思ったことはありませんか？
         |Visubusでは、科目のページと担当教員のページを直接行き来することが出来ます。
       hr
-      small （ランダムで科目と教員の関係が表示される）
+      .text-center
+        p
+          span.js-teacher-name
+          |＝＞
+          span.js-teacher-kana
+        p
+          a.js-teacher-link() この教員のページへ
+      .text-right
+        .btn.btn-default.js-teacher-refersh
+          i.fa.fa-refresh
 
 .section.section__height-eighth
   .container.text-center
@@ -64,7 +85,7 @@
         |+  subjects
     .col-xs-4
       p
-        b 40
+        b 60
         |+  pictures
     .col-xs-4
       p
@@ -86,3 +107,7 @@
             / span.input-group-btn
             /   button.btn.btn-default(type='submit')
             /     i.fa.fa-search
+        .text-center
+          p
+            |または
+            a.btn.btn-link(href='teachers') 教員の一覧を見る

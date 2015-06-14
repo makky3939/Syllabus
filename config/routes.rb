@@ -60,7 +60,7 @@ Rails.application.routes.draw do
 
   resources :subjects, only: [:show]
 
-  resources :teachers, only: [:show]
+  resources :teachers, only: [:index, :show]
 
   resource :api , only: [] do
     resources :teachers, only: [:index], :controller => 'api/teachers'
