@@ -19,7 +19,7 @@
                 h4 = teacher.name
 
                 - if teacher.subject_voice_file_name(@subject.id)
-                  a.btn.btn-link#js-voice-subject*{'data-voice' => teacher.subject_voice_file_name(@subject.id)}
+                  a.btn.btn-link.js-voice-subject*{'data-voice' => teacher.subject_voice_file_name(@subject.id)}
                     i.fa.fa-microphone.fa-fw
                     |科目名を読み上げてもらう
 
@@ -71,6 +71,25 @@
       / p
       /   |method：
       /   b = @subject.method
+
+      h2 時間割
+      table.table.table-bordered
+        thead
+          tr
+            - ['\\', '月', '火', '水', '木', '金'].each do |day|
+              th = day
+
+        tbody
+          - [1, 2, 3, 4, 5, 6].each do |period|
+            tr
+              th
+                = period
+              - ['月', '火', '水', '木', '金'].each do |day|
+                - if @subject.timetable[:day] == day && @subject.timetable[:period].include?(period)
+                  td.info = ''
+                - else
+                  td = ''
+
 
   .row
     - unless @subject.same_subjects.empty?

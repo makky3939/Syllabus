@@ -1,0 +1,28 @@
+= render partial: 'components/navbar'
+
+.container.teacher
+  h1 教員一覧
+  p 顔写真が登録されている教員を表示しています
+  hr
+
+  .row
+    - @teacher.each.with_index do |teacher, index|
+      - if index % 4 == 0
+        .row
+      .col-sm-3
+        .panel.panel-default.same-subject
+          .panel-body.text-center
+            = image_tag teacher.face_path, :size => '192x192', :class => 'img-circle'
+            h4 = teacher.name
+            hr
+            - if teacher.voice_filename
+              .btn.btn-default.js-voice-teacher*{'data-voice' => teacher.voice_filename}
+                i.fa.fa-microphone.fa-fw
+                |声を聞く
+
+            - unless teacher.voice_filename
+              .btn.btn-default(data-toggle='tooltip' data-placement='bottom' title='声が登録されていません')
+                i.fa.fa-microphone.fa-fw
+                |声を聞く
+
+            a.btn.btn-default(href="#{teacher_path(id: teacher.id)}") 教員のページへ

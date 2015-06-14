@@ -43,6 +43,11 @@ class Teacher
       $a.append $img
       $list.append $li.append($a)
       show()
+
+      $('.js-voice-teacher').data('voice', teachers[0].voice_filename)
+      $('.js-teacher-name').text(teachers[0].name)
+      $('.js-teacher-kana').text(teachers[0].kana)
+      $('.js-teacher-link').attr('href', "/teachers/#{teachers[0].id}")
       return
     return
 

@@ -19,6 +19,19 @@ class Subject < ActiveRecord::Base
     end
   end
 
+  def timetable
+    _period = self.period
+    day = _period[0]
+    puts day
+    _period = _period.delete(day)
+    period = _period.split(',').map{|item|
+      unless item.nil?
+        item.to_i
+      end
+    }
+    return {day: day, period: period}
+  end
+
   def tags
     code = self.code
 
@@ -52,6 +65,8 @@ class Subject < ActiveRecord::Base
           '2年次科目'
         when 'GE4'
           '学類共通専門科目'
+        when 'GE5'
+          '専門科目必修'
         when 'GE6'
           '知識科学主専攻'
         when 'GE7'
@@ -59,7 +74,7 @@ class Subject < ActiveRecord::Base
         when 'GE8'
           '情報経営・図書館主専攻'
         else
-          'none'
+          'その他'
       end
     end
 
