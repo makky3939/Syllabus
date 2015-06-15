@@ -23,12 +23,12 @@
 
         - if @teacher.body_filename
           .btn.btn-default(type='button' data-toggle="modal" data-target="#teacherBody")
-            |全体像を見る
+            |全身像を見る
           |/
 
         - unless @teacher.body_filename
           .btn.btn-default(data-toggle='tooltip' data-placement='bottom' title='写真が登録されていません')
-            |全体像を見る
+            |全身像を見る
           |/
 
         - if @teacher.voice_filename
